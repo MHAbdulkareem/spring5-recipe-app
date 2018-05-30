@@ -87,7 +87,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
                 "                \"The simplest version of guacamole is just mashed avocados with salt. Don't let the lack of availability of other ingredients stop you from making guacamole.\\n\" +\n" +
                 "                \"To extend a limited supply of avocados, add either sour cream or cottage cheese to your guacamole dip. Purists may be horrified, but so what? It tastes great.");
 
-        notes.setRecipe(recipe1);
+        //notes.setRecipe(recipe1);
 
         recipe1.setCategories(categories1);
         recipe1.setIngredients(ingredients);
@@ -107,31 +107,13 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
         //Ingredients
         Set<Ingredient> ingredients2 = new HashSet<>();
 
-        Ingredient ingredient1b = new Ingredient();
-        ingredient1b.setAmount(BigDecimal.valueOf(2));
-        ingredient1b.setDescription("Skinless, boneless chicken breasts");
-        ingredient1b.setRecipe(recipe2);
-        ingredient1b.setUom(unitOfMeasureRepository.findByDescription("Pound").get());
-
-        Ingredient ingredient2b = new Ingredient();
-        ingredient2b.setAmount(BigDecimal.valueOf(2));
-        ingredient2b.setDescription("Olive Oil");
-        ingredient2b.setRecipe(recipe2);
-        ingredient2b.setUom(unitOfMeasureRepository.findByDescription("Tablespoon").get());
-
-        Ingredient ingredient3b = new Ingredient();
-        ingredient3b.setAmount(BigDecimal.valueOf(3));
-        ingredient3b.setDescription("Chopped cilantro");
-        ingredient3b.setRecipe(recipe2);
-        ingredient3b.setUom(unitOfMeasureRepository.findByDescription("Tablespoon").get());
-
-        ingredients2.add(ingredient1b);
-        ingredients2.add(ingredient2b);
-        ingredients2.add(ingredient3b);
+        recipe2.addIngredient(new Ingredient("Skinless, boneless chicken breasts", new BigDecimal(2), unitOfMeasureRepository.findByDescription("Pound").get()));
+        recipe2.addIngredient(new Ingredient("Olive Oil", new BigDecimal(2), unitOfMeasureRepository.findByDescription("Tablespoon").get()));
+        recipe2.addIngredient(new Ingredient("Chopped cilantro", new BigDecimal(3), unitOfMeasureRepository.findByDescription("Tablespoon").get()));
 
         //Categories
         Set<Category> categories1b = new HashSet<>();
-        categories1b.add(categoryRepository.findByDescription("American").get());
+        recipe2.getCategories().add(categoryRepository.findByDescription("American").get());
 
         //Notes
         Notes notes2 = new Notes();
@@ -141,7 +123,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> 
                 "                \"\\n\" +\n" +
                 "                \"3 Grill: Preheat the grill for medium high heat. Remove the chicken breasts from the refrigerator. Remove them from the marinade and pat them dry with paper towels. Coat the chicken breasts with some olive oil. Soak a paper towel in a little more oil and use tongs to wipe the grill grates. When the grill is hot, place the chicken breasts on the grill. Grill for a few minutes on each side, until cooked through.");
 
-        notes2.setRecipe(recipe2);
+        //notes2.setRecipe(recipe2);
 
         recipe1.setCategories(categories1);
         recipe1.setIngredients(ingredients);
